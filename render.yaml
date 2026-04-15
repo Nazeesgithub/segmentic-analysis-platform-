@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: segmentiq-flask
+    runtime: python
+    plan: free
+    buildCommand: pip install -r segmentiq_app/requirements.txt
+    startCommand: gunicorn --chdir segmentiq_app app:app
+    envVars:
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.11.9
